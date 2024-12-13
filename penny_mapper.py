@@ -6,6 +6,9 @@ from recurrent import recurrent
 
 
 def category_menu(transaction):
+    if transaction['description'].startswith("LEV.ATM"):
+        return "Miscellaneous", "ATM Withdrawals"
+
     if transaction['is_income']:
         categories = income_categories
         subcategories = income_subcategories

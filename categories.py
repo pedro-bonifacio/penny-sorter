@@ -138,6 +138,7 @@ income_subcategories = {
         "Royalties"
     ],
     "Government Assistance": [
+        "Scholarship",
         "Unemployment Benefits",
         "Disability Benefits",
         "Social Security",
