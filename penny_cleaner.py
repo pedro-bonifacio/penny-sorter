@@ -27,13 +27,13 @@ def import_clean_statement():
     selected_file_path = os.path.join(input_files_path, selected_file)
 
     if selected_bank == 'Montepio':
-        statement = pd.read_csv(selected_file_path, encoding='ISO-8859-1', usecols=[1, 2, 3, 5])
+        statement = pd.read_csv(selected_file_path, encoding='ISO-8859-1', usecols=[0, 2, 3, 5])
 
         # Montepio
         statement.columns = ['date', 'description', 'value', 'balance']
-        statement['date'] = pd.to_datetime(statement['date'], dayfirst=True)
-        statement['value'] = statement['value'].str.replace(',', '.').astype(float)
-        statement['balance'] = statement['balance'].str.replace(',', '.').astype(float)
+        statement['date'] = pd.to_datetime(statement['date'])
+        statement['value'] = statement['value'].str.replace('.', '').str.replace(',', '.').astype(float)
+        statement['balance'] = statement['balance'].str.replace('.', '').str.replace(',', '.').astype(float)
         statement['description'] = statement['description'].str.rstrip()
 
     else:
